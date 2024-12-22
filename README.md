@@ -1,8 +1,15 @@
 # Data Structure Visualizer
 
-An interactive web application for learning data structures through visual animations and step-by-step operations. Built with Next.js 14, TypeScript, and Framer Motion.
+An interactive web application for learning data structures through visual animations and step-by-step operations. Built with Next.js 14, TypeScript, Shadcn/ui, React Flow and Framer Motion.
 
-![DS Visualizer Landing Page](./public/landing_page.png)
+![DS Visualizer Landing Page](./public/landing-light.png)
+![Stacks](./public/ds-st.png)
+![Queue](./public/ds-q.png)
+![Linked List](./public/ds-ll.png)
+![Polynomial](./public/ds-poly.png)
+![Heap](./public/ds-heap.png)
+![Binary Tree](./public/ds-bst.png)
+![AVL Tree](./public/ds-avl.png)
 
 ## Features
 
