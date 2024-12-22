@@ -7,7 +7,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MarkdownContent } from "@/components/shared/markdown-content"
 import { useHeap } from "@/hooks/use-heap"
 
-export function HeapVisualizer({ content }: { content: string }) {
+interface HeapVisualizerProps {
+  content: React.ReactNode
+}
+
+export function HeapVisualizer({ content }: HeapVisualizerProps) {
   const { 
     heap,
     heapArray,

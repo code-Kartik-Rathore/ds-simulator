@@ -1,9 +1,8 @@
+"use client"
+
 import { InfixPostfixVisualizer } from "@/components/visualizer/stack-applications/infix-postfix-visualizer"
-
-const content = `
-
-`
+import Content from "./stack-applications.mdx"
 
 export default function StackApplicationsPage() {
-  return <InfixPostfixVisualizer content={content} />
+  return <InfixPostfixVisualizer content={<Content />} />
 } 

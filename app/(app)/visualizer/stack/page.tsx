@@ -1,12 +1,8 @@
+"use client"
+
 import { StackVisualizer } from "@/components/visualizer/stack/stack-visualizer"
-import { readFileSync } from "fs"
-import path from "path"
+import Content from "./stack.mdx"
 
 export default function StackPage() {
-  const content = readFileSync(
-    path.join(process.cwd(), "content/stack.md"),
-    "utf-8"
-  )
-
-  return <StackVisualizer content={content} />
+  return <StackVisualizer content={<Content />} />
 } 

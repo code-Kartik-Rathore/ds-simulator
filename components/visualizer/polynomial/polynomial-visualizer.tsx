@@ -6,7 +6,7 @@ import { PolynomialMultiplication } from "./polynomial-multiplication"
 import { Card } from "@/components/ui/card"
 
 interface PolynomialVisualizerProps {
-  content: string
+  content: React.ReactNode
 }
 
 export function PolynomialVisualizer({ content }: PolynomialVisualizerProps) {

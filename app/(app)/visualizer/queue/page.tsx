@@ -1,12 +1,8 @@
+"use client"
+
 import { QueueVisualizer } from "@/components/visualizer/queue/queue-visualizer"
-import { readFileSync } from "fs"
-import path from "path"
+import Content from "./queue.mdx"
 
 export default function QueuePage() {
-  const content = readFileSync(
-    path.join(process.cwd(), "content/queue.md"),
-    "utf-8"
-  )
-
-  return <QueueVisualizer content={content} />
+  return <QueueVisualizer content={<Content />} />
 } 

@@ -15,7 +15,11 @@ const LIST_TYPES: { value: ListType; label: string }[] = [
   { value: 'CDLL', label: 'Circular Doubly' },
 ]
 
-export function LinkedListVisualizer({ content }: { content: string }) {
+interface LinkedListVisualizerProps {
+  content: React.ReactNode
+}
+
+export function LinkedListVisualizer({ content }: LinkedListVisualizerProps) {
   return (
     <div className="container p-6 mx-auto">
       <div className="mb-6">

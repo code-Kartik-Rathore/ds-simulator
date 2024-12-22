@@ -7,7 +7,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MarkdownContent } from "@/components/shared/markdown-content"
 import { useStack } from "@/hooks/use-stack"
 
-export function StackVisualizer({ content }: { content: string }) {
+interface StackVisualizerProps {
+  content: React.ReactNode
+}
+
+export function StackVisualizer({ content }: StackVisualizerProps) {
   const { 
     stack,
     operations,

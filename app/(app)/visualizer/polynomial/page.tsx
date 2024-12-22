@@ -1,12 +1,8 @@
+"use client"
+
 import { PolynomialVisualizer } from "@/components/visualizer/polynomial/polynomial-visualizer"
-import { readFileSync } from "fs"
-import path from "path"
+import Content from "./polynomial.mdx"
 
 export default function PolynomialPage() {
-  const content = readFileSync(
-    path.join(process.cwd(), "content/polynomial.md"),
-    "utf-8"
-  )
-
-  return <PolynomialVisualizer content={content} />
+  return <PolynomialVisualizer content={<Content />} />
 } 

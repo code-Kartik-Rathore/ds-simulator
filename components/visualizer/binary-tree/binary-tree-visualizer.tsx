@@ -7,7 +7,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MarkdownContent } from "@/components/shared/markdown-content"
 import { useBinaryTree } from "@/hooks/use-binary-tree"
 
-export function BinaryTreeVisualizer({ content }: { content: string }) {
+interface BinaryTreeVisualizerProps {
+  content: React.ReactNode
+}
+
+export function BinaryTreeVisualizer({ content }: BinaryTreeVisualizerProps) {
   const { 
     tree, 
     highlightedNodes, 

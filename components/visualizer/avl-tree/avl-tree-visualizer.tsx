@@ -7,7 +7,11 @@ import { MarkdownContent } from "@/components/shared/markdown-content"
 import { useAVLTree } from "@/hooks/use-avl-tree"
 import { AVLTreeAnalysis } from "./avl-tree-analysis"
 
-export function AVLTreeVisualizer({ content }: { content: string }) {
+interface AVLTreeVisualizerProps {
+  content: React.ReactNode
+}
+
+export function AVLTreeVisualizer({ content }: AVLTreeVisualizerProps) {
   const { 
     tree, 
     highlightedNodes, 

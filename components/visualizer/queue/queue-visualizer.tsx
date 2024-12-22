@@ -7,7 +7,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MarkdownContent } from "@/components/shared/markdown-content"
 import { useQueue } from "@/hooks/use-queue"
 
-export function QueueVisualizer({ content }: { content: string }) {
+interface QueueVisualizerProps {
+  content: React.ReactNode
+}
+
+export function QueueVisualizer({ content }: QueueVisualizerProps) {
   const { 
     queue,
     operations,
