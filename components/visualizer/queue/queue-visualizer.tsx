@@ -1,8 +1,8 @@
 "use client"
 
-import { QueueControls } from "./queue-controls"
-import { QueueDisplay } from "./queue-display"
-import { QueueOperations } from "./queue-operations"
+import { QueueControls } from "@/components/visualizer/queue/queue-controls"
+import { QueueDisplay } from "@/components/visualizer/queue/queue-display"
+import { QueueOperations } from "@/components/visualizer/queue/queue-operations"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MarkdownContent } from "@/components/shared/markdown-content"
 import { useQueue } from "@/hooks/use-queue"

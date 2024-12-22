@@ -175,24 +175,36 @@ export function useLinkedList(type: ListType) {
       // Last node
       setList({ ...list, head: null, tail: null, nodes: new Map() })
     } else {
-      // Find new tail
-      let newTail = list.head
-      let current = list.head
-      while (nodes.get(current)!.next !== list.tail) {
-        current = nodes.get(current)!.next!
-      }
-      newTail = current
+      // Find new tail - with null checks
+      let newTail: string | null = list.head
+      let current: string | null = list.head
       
-      const newTailNode = nodes.get(newTail)!
-      newTailNode.next = type === 'CSLL' || type === 'CDLL' ? list.head : null
-      
-      if (type === 'CDLL') {
-        const headNode = nodes.get(list.head)!
-        headNode.prev = newTail
+      while (current !== null) {
+        const currentNode = nodes.get(current)
+        if (!currentNode) break
+        if (currentNode.next === list.tail) {
+          newTail = current
+          break
+        }
+        current = currentNode.next
       }
 
-      nodes.delete(list.tail)
-      setList({ ...list, tail: newTail, nodes })
+      if (newTail) {
+        const newTailNode = nodes.get(newTail)
+        if (newTailNode) {
+          newTailNode.next = type === 'CSLL' || type === 'CDLL' ? list.head : null
+          
+          if (type === 'CDLL' && list.head) {
+            const headNode = nodes.get(list.head)
+            if (headNode) {
+              headNode.prev = newTail
+            }
+          }
+
+          nodes.delete(list.tail)
+          setList({ ...list, tail: newTail, nodes })
+        }
+      }
     }
 
     setHighlight([], '')
@@ -205,7 +217,7 @@ export function useLinkedList(type: ListType) {
     addOperation({ type: 'reverse' })
 
     const nodes = new Map(list.nodes)
-    let curr = list.head
+    let curr: string | null = list.head
     let prev: string | null = null
     let next: string | null = null
     const reversedLinks = new Set<string>()
@@ -215,7 +227,7 @@ export function useLinkedList(type: ListType) {
       activeLink: { from: string; to: string } | null = null
     ) => {
       setAnimationState({
-        highlightedNodes: [curr, prev, next].filter(Boolean) as string[],
+        highlightedNodes: [curr, prev, next].filter((id): id is string => id !== null),
         message: `Current: ${curr ? nodes.get(curr)?.value : 'null'}, 
                  Next: ${next ? nodes.get(next)?.value : 'null'}, 
                  Prev: ${prev ? nodes.get(prev)?.value : 'null'}`,
@@ -234,12 +246,16 @@ export function useLinkedList(type: ListType) {
     await new Promise(r => setTimeout(r, 1000))
 
     while (curr) {
-      const currentNode = nodes.get(curr)!
+      const currentNode = nodes.get(curr)
+      if (!currentNode) break
+
       next = currentNode.next
 
       // Show next pointer movement
-      updateReverseStep({ from: curr, to: next! })
-      await new Promise(r => setTimeout(r, 1000))
+      if (next) {
+        updateReverseStep({ from: curr, to: next })
+        await new Promise(r => setTimeout(r, 1000))
+      }
 
       // Reverse current node's pointer
       currentNode.next = prev
@@ -247,14 +263,18 @@ export function useLinkedList(type: ListType) {
       
       if (type === 'DLL' || type === 'CDLL') {
         if (prev) {
-          const prevNode = nodes.get(prev)!
-          prevNode.prev = curr
+          const prevNode = nodes.get(prev)
+          if (prevNode) {
+            prevNode.prev = curr
+          }
         }
         currentNode.prev = next
       }
 
-      updateReverseStep({ from: curr, to: prev! })
-      await new Promise(r => setTimeout(r, 1000))
+      if (prev) {
+        updateReverseStep({ from: curr, to: prev })
+        await new Promise(r => setTimeout(r, 1000))
+      }
 
       // Move pointers
       prev = curr
@@ -265,10 +285,16 @@ export function useLinkedList(type: ListType) {
 
     // Update circular links if needed
     if (type === 'CSLL' || type === 'CDLL') {
-      const oldHead = nodes.get(list.head)!
-      const oldTail = nodes.get(list.tail!)!
-      oldHead.next = list.tail
-      if (type === 'CDLL') oldTail.prev = list.head
+      if (list.head && list.tail) {
+        const oldHead = nodes.get(list.head)
+        const oldTail = nodes.get(list.tail)
+        if (oldHead && oldTail) {
+          oldHead.next = list.tail
+          if (type === 'CDLL') {
+            oldTail.prev = list.head
+          }
+        }
+      }
     }
 
     setList({

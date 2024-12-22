@@ -46,7 +46,7 @@ export const Hero = () => (
         </div>
         <div className="relative aspect-video rounded-lg overflow-hidden border">
           <Image
-            src="/preview.png"
+            src="/ds-bst.png"
             alt="Visualizer Preview"
             fill
             className="object-cover"

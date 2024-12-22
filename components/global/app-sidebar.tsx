@@ -73,13 +73,13 @@ const applications = [
   },
   {
     name: "Infix to Postfix Conversion",
-    url: "/visualizer/infix-postfix",
+    url: "/visualizer/stack-applications",
     icon: Equal,
     description: "Convert infix expressions to postfix notation using a stack",
   },
   {
     name: "Polynomial Multiplication",
-    url: "/visualizer/polynomial-multiplication",
+    url: "/visualizer/polynomial",
     icon: X,
     description: "Multiply two polynomials using linked lists",
   },
