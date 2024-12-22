@@ -6,7 +6,7 @@ An interactive web application for learning data structures through visual anima
 ![Stacks](./public/ds-st.png)
 ![Queue](./public/ds-q.png)
 ![Linked List](./public/ds-ll.png)
-![Polynomial](./public/ds-poly.png)
+![Polynomial](./public/ds-polynomial-multiplication.png)
 ![Heap](./public/ds-heap.png)
 ![Binary Tree](./public/ds-bst.png)
 ![AVL Tree](./public/ds-avl.png)
