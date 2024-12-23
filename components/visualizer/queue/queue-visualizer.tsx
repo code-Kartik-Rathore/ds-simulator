@@ -25,7 +25,7 @@ export function QueueVisualizer({ content }: QueueVisualizerProps) {
   } = useQueue()
 
   return (
-    <div className="container p-6 mx-auto">
+    <div className="container mx-auto">
       <div className="mb-6">
         <h1 className="text-3xl font-bold tracking-tight">Queue</h1>
         <p className="text-muted-foreground">

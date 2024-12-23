@@ -1,6 +1,6 @@
 "use client"
 
-import { Binary, Home, Database, BrainCircuit, TreePine, List, SquareStack, SquareChevronLeft, Equal, MessageSquare, X } from "lucide-react"
+import { Binary, Home, Database, BrainCircuit, TreePine, List, SquareStack, SquareChevronLeft, Equal, MessageSquare, X, Hash } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -83,6 +83,12 @@ const applications = [
     icon: X,
     description: "Multiply two polynomials using linked lists",
   },
+  {
+    name: "Huffman Coding",
+    url: "/visualizer/huffman",
+    icon: Hash,
+    description: "Huffman coding is a popular data compression technique that creates variable-length prefix codes based on the frequency of characters in the input text.",
+  },
 ]
 
 export function AppSidebar() {
@@ -115,7 +121,7 @@ export function AppSidebar() {
           }))}
         />
       </SidebarContent>
-      <SidebarFooter>
+      {/* <SidebarFooter>
         <NavUser
           user={{
             name: "Guest User",
@@ -123,7 +129,7 @@ export function AppSidebar() {
             avatar: "",
           }}
         />
-      </SidebarFooter>
+      </SidebarFooter> */}
       <SidebarRail />
     </Sidebar>
   )

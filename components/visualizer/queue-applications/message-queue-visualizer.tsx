@@ -20,7 +20,7 @@ export function MessageQueueVisualizer({ content }: { content: React.ReactNode }
   } = useMessageQueue()
 
   return (
-    <div className="container p-6 mx-auto">
+    <div className="container mx-auto">
       <div className="mb-6">
         <h1 className="text-3xl font-bold tracking-tight">Message Queue</h1>
         <p className="text-muted-foreground">

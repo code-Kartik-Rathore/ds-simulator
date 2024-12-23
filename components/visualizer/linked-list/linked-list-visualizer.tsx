@@ -9,10 +9,10 @@ import { useLinkedList } from "@/hooks/use-linked-list"
 import { ListType } from "./types"
 
 const LIST_TYPES: { value: ListType; label: string }[] = [
-  { value: 'SLL', label: 'Singly Linked' },
-  { value: 'DLL', label: 'Doubly Linked' },
-  { value: 'CSLL', label: 'Circular Singly' },
-  { value: 'CDLL', label: 'Circular Doubly' },
+  { value: 'SLL', label: 'SLL' },
+  { value: 'DLL', label: 'DLL' },
+  { value: 'CSLL', label: 'CSLL' },
+  { value: 'CDLL', label: 'CDLL' },
 ]
 
 interface LinkedListVisualizerProps {
@@ -21,7 +21,7 @@ interface LinkedListVisualizerProps {
 
 export function LinkedListVisualizer({ content }: LinkedListVisualizerProps) {
   return (
-    <div className="container p-6 mx-auto">
+    <div className="container mx-auto">
       <div className="mb-6">
         <h1 className="text-3xl font-bold tracking-tight">Linked List</h1>
         <p className="text-muted-foreground">

@@ -39,7 +39,7 @@ export function BinaryTreeVisualizer({ content }: BinaryTreeVisualizerProps) {
   }
 
   return (
-    <div className="container p-6 mx-auto">
+    <div className="container mx-auto">
       <Tabs defaultValue="visualization" className="w-full space-y-6">
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="visualization">Visualization</TabsTrigger>

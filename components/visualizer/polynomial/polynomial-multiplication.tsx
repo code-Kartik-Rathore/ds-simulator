@@ -107,9 +107,9 @@ export function PolynomialMultiplication() {
   }, [isAutoPlaying, currentStep, steps.length])
 
   return (
-    <div className="grid grid-cols-[300px_1fr] gap-6">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-[300px_1fr]">
       <div className="space-y-6">
-        <Card className="p-4">
+        <Card className="p-4 border-none p-0">
           <h3 className="font-semibold mb-4">Polynomial Controls</h3>
           <div className="space-y-4">
             <div className="space-y-2">

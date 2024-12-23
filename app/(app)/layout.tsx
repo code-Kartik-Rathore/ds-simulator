@@ -12,7 +12,9 @@ export default function AppLayout({
       <AppSidebar />
       <SidebarInset>
         <Breadcrumbs />
-        {children}
+        <main className="flex-1 p-3 sm:p-10">
+          {children}
+        </main>
       </SidebarInset>
     </SidebarProvider>
   );

@@ -33,13 +33,13 @@ export const Hero = () => (
           </div>
           <div className="flex flex-row gap-4">
             <Link href="https://github.com/yourusername/ds-visualizer">
-              <Button size="lg" className="gap-4" variant="outline">
+              <Button className="gap-4" variant="outline">
                 View on GitHub <Github className="w-4 h-4" />
               </Button>
             </Link>
-            <Link href="/home">
-              <RainbowButton className="gap-4">
-                Start Learning <MoveRight className="w-4 h-4" />
+            <Link href="/visualizer">
+              <RainbowButton className="w-full">
+                Visualizer <MoveRight className="hidden sm:block w-4 h-4" />
               </RainbowButton>
             </Link>
           </div>

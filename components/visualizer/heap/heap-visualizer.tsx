@@ -24,7 +24,7 @@ export function HeapVisualizer({ content }: HeapVisualizerProps) {
   } = useHeap()
 
   return (
-    <div className="container p-6 mx-auto">
+    <div className="container mx-auto">
       <div className="mb-6">
         <h1 className="text-3xl font-bold tracking-tight">
           {heapType === 'max' ? 'Max Heap' : 'Min Heap'}
