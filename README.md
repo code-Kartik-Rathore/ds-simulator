@@ -25,6 +25,8 @@ An interactive web application for learning data structures through visual anima
 - **Infix to Postfix Conversion**: Expression conversion using stacks
 - **Message Queue System**: Producer-consumer queue simulation
 - **Polynomial Multiplication**: Using linked list representation
+- **Huffman Coding**: Encoding and decoding messages using a Huffman tree
+- **Dijkstra's Algorithm**: Finding the shortest path between nodes in a graph
 
 ## Tech Stack
 
@@ -32,6 +34,7 @@ An interactive web application for learning data structures through visual anima
 - **Language**: TypeScript
 - **Styling**: TailwindCSS
 - **Animations**: Framer Motion
+- **Graph Visualization**: React Flow
 - **UI Components**: Shadcn/ui
 
 ## Getting Started
