@@ -11,10 +11,10 @@ export const TechStack = () => (
           </div>
           <div className="flex gap-2 flex-col">
             <h2 className="text-xl md:text-3xl md:text-5xl tracking-tighter lg:max-w-xl font-regular text-left">
-              Built with Modern Web Technologies
+              Built with Next.js 14 and TypeScript
             </h2>
             <p className="text-lg lg:max-w-sm leading-relaxed tracking-tight text-muted-foreground text-left">
-              Using Next.js 14 with TypeScript for type safety, and Framer Motion for smooth animations. Built with performance and user experience in mind.
+              Using React Flow for the graph visualization, and Framer Motion for smooth animations.
             </p>
           </div>
         </div>
@@ -32,10 +32,10 @@ export const TechStack = () => (
             <div className="flex gap-0 flex-col justify-between p-6 border rounded-md">
               <Cpu className="w-4 h-4 mb-10 text-primary" />
               <h2 className="text-2xl tracking-tighter max-w-xl text-left font-regular">
-                TypeScript
+                React Flow
               </h2>
               <p className="text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left">
-                Type-safe development
+                Node-based graph library
               </p>
             </div>
             <div className="flex gap-0 flex-col justify-between p-6 border rounded-md">

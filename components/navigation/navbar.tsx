@@ -30,31 +30,71 @@ interface RouteProps {
 interface FeatureProps {
   title: string;
   description: string;
+  url: string;
 }
 
 const routeList: RouteProps[] = [
   {
     href: "/visualizer",
-    label: "Data Structures",
-  },
-  {
-    href: "/home",
     label: "Dashboard",
   },
 ];
 
 const featureList: FeatureProps[] = [
   {
-    title: "Basic Data Structures",
+    title: "Stacks",
+    description: "Learn stacks, queues, and linked lists through interactive visualizations.",
+    url: "/visualizer/stack"
+  },
+  {
+    title: "Queues",
+    description: "Learn queues, stacks, and linked lists through interactive visualizations.",
+    url: "/visualizer/queue"
+  },
+  {
+    title: "Linked Lists",
     description: "Learn linked lists, stacks, and queues through interactive visualizations.",
+    url: "/visualizer/linked-list"
   },
   {
-    title: "Tree Structures",
-    description: "Explore BST, AVL trees, and heaps with real-time operations.",
+    title: "Binary Search Trees",
+    description: "Learn binary search trees, stacks, and queues through interactive visualizations.",
+    url: "/visualizer/binary-tree"
   },
   {
-    title: "Real-world Applications",
-    description: "Practice with expression conversion, message queues, and polynomial operations.",
+    title: "AVL Trees",
+    description: "Learn AVL trees, stacks, and queues through interactive visualizations.",
+    url: "/visualizer/avl-tree"
+  },
+  {
+    title: "Heaps",
+    description: "Learn heaps, stacks, and queues through interactive visualizations.",
+    url: "/visualizer/heap"
+  },
+  {
+    title: "Infix to Postfix",
+    description: "Learn how to convert infix expressions to postfix notation using a stack.",
+    url: "/visualizer/stack-applications"
+  },
+  {
+    title: "Message Queue",
+    description: "Learn how to use a message queue to simulate a producer-consumer system.",
+    url: "/visualizer/queue-applications"
+  },
+  {
+    title: "Polynomial Multiplication",
+    description: "Learn how to multiply polynomials using a stack.",
+    url: "/visualizer/polynomial"
+  },
+  {
+    title: "Huffman Coding",
+    description: "Learn how to encode and decode messages using a Huffman tree.",
+    url: "/visualizer/huffman"
+  },
+  {
+    title: "Dijkstra's Algorithm",
+    description: "Learn how to find the shortest path between nodes in a graph using Dijkstra's algorithm.",
+    url: "/visualizer/dijkstra"
   },
 ];
 
@@ -119,19 +159,23 @@ export const Navbar = () => {
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className="bg-transparent">
-              Features
+              Data Structures
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                {featureList.map(({ title, description }) => (
-                  <li key={title} className="rounded-md p-3 hover:bg-muted">
-                    <p className="mb-1 font-semibold leading-none text-foreground">
-                      {title}
+                {featureList.map(({ title, description, url }) => (
+                  <NavigationMenuLink key={title} asChild>
+                    <Link href={url}>
+                      <li key={title} className="rounded-md p-3 hover:bg-muted">
+                        <p className="mb-1 font-semibold leading-none text-foreground">
+                          {title}
                     </p>
                     <p className="line-clamp-2 text-muted-foreground">
                       {description}
-                    </p>
-                  </li>
+                        </p>
+                      </li>
+                    </Link>
+                  </NavigationMenuLink>
                 ))}
               </ul>
             </NavigationMenuContent>

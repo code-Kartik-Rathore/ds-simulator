@@ -10,6 +10,8 @@ An interactive web application for learning data structures through visual anima
 ![Heap](./public/ds-heap.png)
 ![Binary Tree](./public/ds-bst.png)
 ![AVL Tree](./public/ds-avl.png)
+![Huffman](./public/ds-huffman.png)
+![Dijkstra](./public/ds-dijkstra.png)
 
 ## Features
 

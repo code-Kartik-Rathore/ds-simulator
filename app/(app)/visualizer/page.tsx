@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { BrainCircuit, Binary, TreePine, Box, List, ArrowLeftRight, Calculator, MessageSquare } from "lucide-react"
+import { BrainCircuit, Binary, TreePine, Box, List, ArrowLeftRight, Calculator, MessageSquare, Hash, ArrowRightLeft } from "lucide-react"
 import Link from "next/link"
 
 const sections = {
@@ -45,13 +45,13 @@ const sections = {
     {
       name: "Infix to Postfix",
       description: "Convert infix expressions to postfix notation using stacks. Step through the conversion process.",
-      href: "/visualizer/infix-postfix",
+      href: "/visualizer/stack-applications",
       icon: Calculator,
     },
     {
       name: "Message Queue",
       description: "Simulate message queuing systems with producers and consumers. Visualize message flow.",
-      href: "/visualizer/message-queue",
+      href: "/visualizer/queue-applications",
       icon: MessageSquare,
     },
     {
@@ -59,6 +59,18 @@ const sections = {
       description: "Visualize polynomial multiplication using linked lists. See term-by-term multiplication steps.",
       href: "/visualizer/polynomial",
       icon: Calculator,
+    },
+    {
+      name: "Huffman Coding",
+      description: "Huffman coding is a popular data compression technique that creates variable-length prefix codes based on the frequency of characters in the input text.",
+      href: "/visualizer/huffman",
+      icon: Hash,
+    },
+    {
+      name: "Dijkstra's Algorithm",
+      description: "Visualize Dijkstra's algorithm to find the shortest path in a graph.",
+      href: "/visualizer/dijkstra",
+      icon: ArrowRightLeft,
     },
   ]
 }

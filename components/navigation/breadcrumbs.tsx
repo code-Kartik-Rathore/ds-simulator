@@ -22,21 +22,49 @@ const routes = {
     name: "Visualizer",
     path: "/visualizer",
   },
+  "/visualizer/stack": {
+    name: "Stack",
+    path: "/visualizer/stack",
+  },
+  "/visualizer/queue": {
+    name: "Queue",
+    path: "/visualizer/queue",
+  },
+  "/visualizer/stack-applications": {
+    name: "Infix to Postfix",
+    path: "/visualizer/stack-applications",
+  },
+  "/visualizer/queue-applications": {
+    name: "Message Queue",
+    path: "/visualizer/queue-applications",
+  },
+  "/visualizer/linked-list": {
+    name: "Linked List",
+    path: "/visualizer/linked-list",
+  },
+  "/visualizer/polynomial": {
+    name: "Polynomial Multiplication",
+    path: "/visualizer/polynomial",
+  },
   "/visualizer/binary-tree": {
     name: "Binary Tree",
     path: "/visualizer/binary-tree",
   },
-  "/visualizer/hash-maps": {
-    name: "Hash Maps",
-    path: "/visualizer/hash-maps",
+  "/visualizer/avl-tree": {
+    name: "AVL Tree",
+    path: "/visualizer/avl-tree",
   },
-  "/visualizer/priority-queue": {
-    name: "Priority Queue",
-    path: "/visualizer/priority-queue",
+  "/visualizer/heap": {
+    name: "Heap",
+    path: "/visualizer/heap",
   },
-  "/visualizer/graph": {
-    name: "Graph",
-    path: "/visualizer/graph",
+  "/visualizer/huffman": {
+    name: "Huffman Coding",
+    path: "/visualizer/huffman",
+  },
+  "/visualizer/dijkstra": {
+    name: "Dijkstra's Algorithm",
+    path: "/visualizer/dijkstra",
   },
 }
 
@@ -89,7 +117,7 @@ export function Breadcrumbs({
   }
 
   return (
-    <header className="flex h-16 shrink-0 items-center gap-2 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="flex h-20 shrink-0 sticky top-0 items-center gap-2 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex items-center gap-2 px-4 w-full">
         <SidebarTrigger className="-ml-1" />
         <Separator orientation="vertical" className="mr-2 h-4" />

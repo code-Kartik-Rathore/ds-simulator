@@ -1,6 +1,6 @@
 "use client"
 
-import { Binary, Home, Database, BrainCircuit, TreePine, List, SquareStack, SquareChevronLeft, Equal, MessageSquare, X, Hash } from "lucide-react"
+import { Binary, Home, Database, BrainCircuit, TreePine, List, SquareStack, SquareChevronLeft, Equal, MessageSquare, X, Hash, ArrowRightLeft } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -88,6 +88,12 @@ const applications = [
     url: "/visualizer/huffman",
     icon: Hash,
     description: "Huffman coding is a popular data compression technique that creates variable-length prefix codes based on the frequency of characters in the input text.",
+  },
+  {
+    name: "Dijkstra's Algorithm",
+    url: "/visualizer/dijkstra",
+    icon: ArrowRightLeft,
+    description: "Dijkstra's algorithm is a graph search algorithm that finds the shortest path between nodes in a graph.",
   },
 ]
 

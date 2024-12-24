@@ -7,139 +7,115 @@ import ReactFlow, {
   Controls,
   useNodesState,
   useEdgesState,
-  ReactFlowInstance,
-  Panel,
+  ConnectionLineType,
+  MarkerType,
 } from 'reactflow'
 import 'reactflow/dist/style.css'
-import { GraphNode, GraphEdge } from './types'
-import GraphNodeComponent from './graph-node'
-import GraphEdgeComponent from './graph-edge'
+import { Graph } from '@/hooks/use-dijkstra'
+import { useEffect } from 'react'
 import { useTheme } from 'next-themes'
-import { useEffect, useCallback, useState } from 'react'
+import GraphNode from '@/components/visualizer/dijkstra/graph-node'
 
 interface DijkstraDisplayProps {
-  nodes: GraphNode[]
-  edges: GraphEdge[]
-  highlightedNodes: string[]
-  message: string
-  startNode: string | null
-  endNode: string | null
-  shortestPath?: string[]
-  onNodeClick?: (nodeId: string) => void
-  onPaneClick?: (x: number, y: number) => void
+  graph: Graph
+  distances: Map<string, number>
+  path: string[]
+  currentNode: string | null
+  visitedNodes: Set<string>
 }
 
 const nodeTypes = {
-  graph: GraphNodeComponent,
+  graph: GraphNode,
 }
 
-const edgeTypes = {
-  graph: GraphEdgeComponent,
+// Default edge settings
+const defaultEdgeOptions = {
+  type: 'straight',
+  animated: false,
+  style: { strokeWidth: 2 },
 }
 
-export function DijkstraDisplay({ 
-  nodes,
-  edges,
-  highlightedNodes,
-  message,
-  startNode,
-  endNode,
-  shortestPath = [],
-  onNodeClick,
-  onPaneClick,
+export function DijkstraDisplay({
+  graph,
+  distances,
+  path,
+  currentNode,
+  visitedNodes,
 }: DijkstraDisplayProps) {
-  const [reactFlowNodes, setReactFlowNodes, onNodesChange] = useNodesState([])
-  const [reactFlowEdges, setReactFlowEdges, onEdgesChange] = useEdgesState([])
-  const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null)
+  const [nodes, setNodes, onNodesChange] = useNodesState([])
+  const [edges, setEdges, onEdgesChange] = useEdgesState([])
   const { theme } = useTheme()
 
-  const onInit = useCallback((flowInstance: ReactFlowInstance) => {
-    setReactFlowInstance(flowInstance)
-    setTimeout(() => {
-      flowInstance.fitView({
-        padding: 0.2,
-        duration: 400,
-        maxZoom: 1.5,
-      })
-    }, 50)
-  }, [])
-
   useEffect(() => {
-    const newNodes: Node[] = nodes.map(node => ({
+    // Convert graph nodes to ReactFlow nodes
+    const flowNodes: Node[] = graph.nodes.map(node => ({
       id: node.id,
       type: 'graph',
-      position: { x: node.x || 0, y: node.y || 0 },
+      position: { x: node.x, y: node.y },
       data: {
-        label: node.label,
-        distance: node.distance,
-        isVisited: node.isVisited,
-        isStart: node.id === startNode,
-        isEnd: node.id === endNode,
-        highlighted: highlightedNodes.includes(node.id),
-        isInPath: shortestPath.includes(node.id),
+        id: node.id,
+        distance: distances.get(node.id) || Infinity,
+        isVisited: visitedNodes.has(node.id),
+        isCurrent: node.id === currentNode,
+        isPath: path.includes(node.id),
       },
     }))
 
-    const newEdges: Edge[] = edges.map(edge => ({
-      id: edge.id,
-      source: edge.source,
-      target: edge.target,
-      type: 'graph',
-      label: String(edge.weight),
-      style: { 
-        stroke: theme === 'dark' ? '#ffffff' : '#000000',
-        strokeWidth: shortestPath.includes(edge.source) && 
-                    shortestPath.includes(edge.target) ? 3 : 1,
-        opacity: 0.5,
-      },
-    }))
-
-    setReactFlowNodes(newNodes)
-    setReactFlowEdges(newEdges)
-
-    if (reactFlowInstance && nodes.length > 0) {
-      reactFlowInstance.fitView({
-        padding: 0.2,
-        duration: 400,
-        maxZoom: 1.5,
+    // Convert graph edges to ReactFlow edges
+    const flowEdges: Edge[] = graph.edges.map(edge => {
+      const isPathEdge = path.some((node, index) => {
+        const nextNode = path[index + 1]
+        return (
+          nextNode && 
+          ((edge.source === node && edge.target === nextNode) ||
+           (edge.target === node && edge.source === nextNode))
+        )
       })
-    }
-  }, [
-    nodes.length,
-    edges,
-    highlightedNodes,
-    startNode,
-    endNode,
-    shortestPath,
-    theme,
-    setReactFlowNodes,
-    setReactFlowEdges,
-    reactFlowInstance
-  ])
+
+      return {
+        id: `${edge.source}-${edge.target}`,
+        source: edge.source,
+        target: edge.target,
+        label: edge.weight.toString(),
+        type: 'straight',
+        animated: isPathEdge,
+        style: {
+          strokeWidth: 2,
+          stroke: isPathEdge 
+            ? '#10b981' 
+            : theme === 'dark' ? '#fff' : '#000',
+        },
+        labelStyle: {
+          fill: theme === 'dark' ? '#fff' : '#000',
+          fontWeight: '700',
+          fontSize: '14px',
+        },
+        labelBgStyle: {
+          fill: theme === 'dark' ? '#1e293b' : '#e2e8f0',
+          fillOpacity: 0.9,
+          rx: 4,
+          stroke: theme === 'dark' ? '#334155' : '#94a3b8',
+          strokeWidth: 1,
+          padding: 4,
+        },
+        labelShowBg: true,
+      }
+    })
+
+    setNodes(flowNodes)
+    setEdges(flowEdges)
+  }, [graph, distances, path, currentNode, visitedNodes, theme])
 
   return (
-    <div className="relative w-full h-[600px] bg-background rounded-lg overflow-hidden border">
-      {message && (
-        <div className="absolute top-4 left-4 z-10 bg-background/95 backdrop-blur-sm px-4 py-2 rounded-lg border">
-          {message}
-        </div>
-      )}
+    <div className="h-[800px] bg-background rounded-lg overflow-hidden border">
       <ReactFlow
-        nodes={reactFlowNodes}
-        edges={reactFlowEdges}
+        nodes={nodes}
+        edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        onInit={onInit}
-        onNodeClick={(_, node) => onNodeClick?.(node.id)}
-        onPaneClick={(e) => {
-          const bounds = (e.target as HTMLElement).getBoundingClientRect()
-          onPaneClick?.(
-            e.clientX - bounds.left,
-            e.clientY - bounds.top
-          )
-        }}
         nodeTypes={nodeTypes}
-        edgeTypes={edgeTypes}
+        defaultEdgeOptions={defaultEdgeOptions}
+        connectionLineType={ConnectionLineType.Straight}
         fitView
         fitViewOptions={{
           padding: 0.2,
@@ -149,7 +125,6 @@ export function DijkstraDisplay({
         maxZoom={2}
         defaultViewport={{ x: 0, y: 0, zoom: 1 }}
         proOptions={{ hideAttribution: true }}
-        className="transition-all duration-300"
       >
         <Background 
           color={theme === 'dark' ? '#ffffff' : '#000000'} 

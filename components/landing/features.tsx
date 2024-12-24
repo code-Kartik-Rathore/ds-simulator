@@ -45,18 +45,18 @@ const features = [
   },
   {
     title: "Infix to Postfix Conversion",
-    description: "Understand expression conversion using stacks. Watch how infix expressions are transformed into postfix notation.",
+    description: "Visualize the conversion of infix expressions to postfix notation using a stack.",
     image: "/ds-infix-to-postfix.png",
     url: "/visualizer/stack-applications"
   },
   {
     title: "Message Queue System",
-    description: "Explore producer-consumer scenarios with message queues. Visualize message flow and queue operations.",
+    description: "Use a message queue to simulate a producer-consumer system. Visualize message flow and queue operations.",
     image: "/ds-mq.png",
     url: "/visualizer/queue-applications"
   },
   {
-    title: "Polynomial Operations",
+    title: "Polynomial Multiplication",
     description: "See polynomial multiplication in action using linked list representation. Follow term-by-term multiplication steps.",
     image: "/ds-polynomial-multiplication.png",
     url: "/visualizer/polynomial"
@@ -66,6 +66,12 @@ const features = [
     description: "Huffman coding is a popular data compression technique that creates variable-length prefix codes based on the frequency of characters in the input text.",
     image: "/ds-huffman.png",
     url: "/visualizer/huffman"
+  },
+  {
+    title: "Dijkstra's Algorithm",
+    description: "Dijkstra's algorithm is a popular algorithm for finding the shortest path between nodes in a graph.",
+    image: "/ds-dijkstra.png",
+    url: "/visualizer/dijkstra"
   },
 ];
 
