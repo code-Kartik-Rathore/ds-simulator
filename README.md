@@ -1,4 +1,4 @@
-# Data Structure Visualizer
+# Data Structure Simulator
 
 An interactive web application for learning data structures through visual animations and step-by-step operations. Built with Next.js 14, TypeScript, Shadcn/ui, React Flow and Framer Motion.
 
