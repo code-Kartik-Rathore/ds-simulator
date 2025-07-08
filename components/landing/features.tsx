@@ -90,11 +90,12 @@ export const Features = () => {
       <div className="container mx-auto">
         <div className="flex flex-col gap-10">
           <div className="flex gap-4 flex-col items-start">
-            <div>
-              <Badge>Features</Badge>
+            <div className="flex items-center gap-3">
+              <span className="inline-block w-2 h-8 rounded-full bg-gradient-to-b from-accent to-primary/70 shadow-lg" />
+              <Badge className="bg-accent text-accent-foreground px-3 py-1 shadow">Features</Badge>
             </div>
             <div className="flex gap-2 flex-col">
-              <h2 className="text-3xl md:text-5xl tracking-tighter max-w-xl font-regular text-left">
+              <h2 className="text-3xl md:text-5xl tracking-tighter max-w-xl font-bold text-left bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent drop-shadow-lg">
                 Interactive Learning Tools
               </h2>
               <p className="text-lg max-w-xl lg:max-w-lg leading-relaxed tracking-tight text-muted-foreground text-left">
@@ -106,17 +107,19 @@ export const Features = () => {
             {features.map((feature, index) => (
               <div 
                 key={index} 
-                className="flex flex-col gap-2 cursor-pointer group"
+                className="flex flex-col gap-2 cursor-pointer group bg-gradient-to-br from-background via-secondary/30 to-accent/10 border-2 border-primary/10 rounded-xl p-4 shadow-sm hover:shadow-xl transition-all hover:border-accent/40"
                 onClick={() => setSelectedFeature(feature)}
               >
-                <div className="relative aspect-video rounded-md overflow-hidden mb-2 ring-1 ring-primary/10 group-hover:ring-primary/30 transition-all">
+                <div className="relative aspect-video rounded-lg overflow-hidden mb-2 border-2 border-primary/20 group-hover:border-accent/60 transition-all">
                   <img
                     src={feature.image}
                     alt={feature.title}
-                    className="object-cover w-full h-full transition-transform group-hover:scale-105"
+                    className="object-cover w-full h-full transition-transform group-hover:scale-105 rounded-md"
                   />
                 </div>
-                <h3 className="text-xl tracking-tight">{feature.title}</h3>
+                <h3 className="text-xl tracking-tight font-semibold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                  {feature.title}
+                </h3>
                 <p className="text-muted-foreground text-base">
                   {feature.description}
                 </p>

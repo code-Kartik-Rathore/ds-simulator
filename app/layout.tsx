@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/global/theme-provider";
-const inter = Inter({ subsets: ['latin'] })
+
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'], variable: '--font-poppins' });
+const montserrat = Montserrat({ subsets: ['latin'], weight: ['400', '600', '700'], variable: '--font-montserrat' });
 
 export const metadata: Metadata = {
-  title: "DS Visualizer",
-  description: "DS Visualizer is a tool for visualizing data structures",
+  title: "DS Simulator",
+  description: "DS Simulator is a tool for simulating data structures",
 };
 
 export default function RootLayout({
@@ -17,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={poppins.variable + ' ' + montserrat.variable}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
