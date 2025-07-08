@@ -2,7 +2,7 @@
 
 An interactive web application for learning data structures through visual animations and step-by-step operations. Built with Next.js 14, TypeScript, Shadcn/ui, React Flow and Framer Motion.
 
-![DS Visualizer Landing Page](./public/landing-light.png)
+![DS Simulator Landing Page](./public/landing-light.png)
 ![Stacks](./public/ds-st.png)
 ![Queue](./public/ds-q.png)
 ![Linked List](./public/ds-ll.png)
@@ -41,8 +41,8 @@ An interactive web application for learning data structures through visual anima
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/CubeStar1/ds-visualizer.git
-cd ds-visualizer
+git clone https://github.com/CubeStar1/ds-simulator.git
+cd ds-simulator
 ```
 
 2. Install dependencies:
